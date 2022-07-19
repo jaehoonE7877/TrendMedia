@@ -43,17 +43,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="방해 금지 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mnu-4W-cex">
-                                                    <rect key="frame" x="57.75" y="13" width="86" height="18"/>
+                                                    <rect key="frame" x="78.5" y="13" width="86" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wr5-Ji-QNM">
-                                                    <rect key="frame" x="17.75" y="9" width="25" height="25"/>
+                                                    <rect key="frame" x="20" y="0.0" width="43.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" systemColor="systemPurpleColor"/>
-                                                    <imageReference key="image" image="moon.fill" catalog="system" symbolScale="large"/>
+                                                    <imageReference key="image" image="check" symbolScale="large"/>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="켬" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7C9-yG-mVz">
                                                     <rect key="frame" x="324.5" y="13" width="13" height="18"/>
@@ -93,6 +93,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nBH-hU-WY0">
                                                     <rect key="frame" x="333" y="12" width="4.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -216,7 +217,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6H-Tt-1Sb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375" y="802"/>
+            <point key="canvasLocation" x="-330" y="830"/>
         </scene>
         <!--설정-->
         <scene sceneID="mMm-JT-MYr">
@@ -245,13 +246,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8I-H5-qHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="480" y="802"/>
+            <point key="canvasLocation" x="465" y="831"/>
         </scene>
     </scenes>
     <resources>
         <image name="bed.double.fill" catalog="system" width="128" height="82"/>
+        <image name="check" width="128" height="128"/>
         <image name="lanyardcard.fill" catalog="system" width="108" height="128"/>
-        <image name="moon.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

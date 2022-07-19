@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         for i in dateLabelCollection {
             i.font = UIFont.boldSystemFont(ofSize: 20)
             i.textColor = .brown
-            
             yellowViewleadingConstraint.constant = 120
         }
         

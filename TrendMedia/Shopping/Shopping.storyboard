@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dsg-Qb-8qK">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--쇼핑-->
+        <scene sceneID="qa2-h9-DD7">
+            <objects>
+                <tableViewController id="usm-zn-VWI" customClass="ShoppingTableViewController" customModule="TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="Jxd-Ab-wrB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="tkw-Lq-YRg">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXM-be-1QJ">
+                                    <rect key="frame" x="20" y="12" width="374" height="52"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ce2-BY-mSq">
+                                            <rect key="frame" x="0.0" y="0.0" width="297" height="52"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="shoppingListTextField:" destination="usm-zn-VWI" eventType="editingDidEndOnExit" id="TG2-K5-K0Z"/>
+                                            </connections>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiF-Lu-gZQ">
+                                            <rect key="frame" x="307" y="0.0" width="67" height="52"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            <connections>
+                                                <action selector="restoreButtonTapped:" destination="usm-zn-VWI" eventType="touchUpInside" id="UmP-xi-Vu1"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="374" id="ejj-Q8-EYl"/>
+                                        <constraint firstItem="Ce2-BY-mSq" firstAttribute="width" secondItem="xiF-Lu-gZQ" secondAttribute="width" multiplier="4.43284" id="fZj-ZO-KjR"/>
+                                        <constraint firstItem="Ce2-BY-mSq" firstAttribute="height" secondItem="xiF-Lu-gZQ" secondAttribute="height" id="fjf-1y-Rsi"/>
+                                        <constraint firstAttribute="height" constant="52" id="sYu-kf-sOc"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="wXM-be-1QJ" firstAttribute="centerX" secondItem="tkw-Lq-YRg" secondAttribute="centerX" id="BPL-Z3-XP9"/>
+                                <constraint firstItem="wXM-be-1QJ" firstAttribute="centerY" secondItem="tkw-Lq-YRg" secondAttribute="centerY" id="vte-bh-sLI"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingListTableViewCell" rowHeight="56" id="NFB-lC-Pj4" customClass="ShoppingListTableViewCell" customModule="TrendMedia" customModuleProvider="target">
+                                <rect key="frame" x="20" y="125.5" width="374" height="56"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NFB-lC-Pj4" id="Qlu-V7-RNm">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6G-mU-a54">
+                                            <rect key="frame" x="10" y="10" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="6cl-dt-YTo"/>
+                                                <constraint firstAttribute="height" constant="36" id="czo-Ht-DAE"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain"/>
+                                            <connections>
+                                                <action selector="checkboxButtonTapped:" destination="NFB-lC-Pj4" eventType="touchUpInside" id="P7h-1L-8Ex"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsO-Pr-n6Y">
+                                            <rect key="frame" x="56" y="10" width="257" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9t-1m-D3N">
+                                            <rect key="frame" x="323" y="10" width="36" height="36"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain"/>
+                                            <connections>
+                                                <action selector="bookmarkButtonTapped:" destination="NFB-lC-Pj4" eventType="touchUpInside" id="YwH-NW-nyO"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="J6G-mU-a54" firstAttribute="height" secondItem="YsO-Pr-n6Y" secondAttribute="height" id="7sQ-or-YX2"/>
+                                        <constraint firstItem="Y9t-1m-D3N" firstAttribute="centerY" secondItem="Qlu-V7-RNm" secondAttribute="centerY" id="DFT-33-DWZ"/>
+                                        <constraint firstItem="YsO-Pr-n6Y" firstAttribute="centerY" secondItem="Qlu-V7-RNm" secondAttribute="centerY" id="Hea-VA-k7t"/>
+                                        <constraint firstItem="J6G-mU-a54" firstAttribute="height" secondItem="Y9t-1m-D3N" secondAttribute="height" id="Ik5-qM-nNM"/>
+                                        <constraint firstItem="J6G-mU-a54" firstAttribute="top" secondItem="Qlu-V7-RNm" secondAttribute="top" constant="10" id="KEk-E5-J1c"/>
+                                        <constraint firstItem="J6G-mU-a54" firstAttribute="leading" secondItem="Qlu-V7-RNm" secondAttribute="leading" constant="10" id="QVl-ZS-ktM"/>
+                                        <constraint firstItem="J6G-mU-a54" firstAttribute="centerY" secondItem="Qlu-V7-RNm" secondAttribute="centerY" id="VcZ-qq-5vR"/>
+                                        <constraint firstItem="J6G-mU-a54" firstAttribute="width" secondItem="Y9t-1m-D3N" secondAttribute="width" id="cWF-NZ-Clx"/>
+                                        <constraint firstItem="J6G-mU-a54" firstAttribute="width" secondItem="YsO-Pr-n6Y" secondAttribute="width" multiplier="0.14" id="gYh-AN-sm1"/>
+                                        <constraint firstItem="J6G-mU-a54" firstAttribute="centerY" secondItem="Qlu-V7-RNm" secondAttribute="centerY" id="mMu-MN-GSc"/>
+                                        <constraint firstItem="YsO-Pr-n6Y" firstAttribute="leading" secondItem="J6G-mU-a54" secondAttribute="trailing" constant="10" id="s5W-Ma-DWK"/>
+                                        <constraint firstItem="Y9t-1m-D3N" firstAttribute="leading" secondItem="YsO-Pr-n6Y" secondAttribute="trailing" constant="10" id="vJr-7K-80p"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bookmarkButton" destination="Y9t-1m-D3N" id="nPP-5V-sJ6"/>
+                                    <outlet property="checkboxButton" destination="J6G-mU-a54" id="fzd-6E-MqI"/>
+                                    <outlet property="shoppingListLabel" destination="YsO-Pr-n6Y" id="UHP-B9-EfY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="usm-zn-VWI" id="YWS-bR-Uyh"/>
+                            <outlet property="delegate" destination="usm-zn-VWI" id="b2H-Cd-fWC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="쇼핑" id="XbQ-hf-X7j"/>
+                    <connections>
+                        <outlet property="restoreButton" destination="xiF-Lu-gZQ" id="5jF-bW-9g9"/>
+                        <outlet property="shoppingTextField" destination="Ce2-BY-mSq" id="6Ia-M7-xMS"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gLo-K2-swH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908.69565217391312" y="124.55357142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="asy-oK-R6V">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dsg-Qb-8qK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ev-fX-yDO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="usm-zn-VWI" kind="relationship" relationship="rootViewController" id="kRv-0d-Al8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IAp-QX-xaE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="43.478260869565219" y="124.55357142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
