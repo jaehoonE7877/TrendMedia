@@ -19,11 +19,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wXM-be-1QJ">
-                                    <rect key="frame" x="20" y="12" width="374" height="52"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjf-CX-AZV">
+                                    <rect key="frame" x="20" y="7.5" width="374" height="61"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ce2-BY-mSq">
-                                            <rect key="frame" x="0.0" y="0.0" width="297" height="52"/>
+                                            <rect key="frame" x="12" y="12" width="268" height="37"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -31,7 +31,11 @@
                                             </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiF-Lu-gZQ">
-                                            <rect key="frame" x="307" y="0.0" width="67" height="52"/>
+                                            <rect key="frame" x="299" y="12" width="67" height="37"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="67" id="9oU-GP-Gqm"/>
+                                                <constraint firstAttribute="height" constant="36" id="Bjw-Vb-2Ok"/>
+                                            </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                             <connections>
@@ -40,16 +44,23 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="374" id="ejj-Q8-EYl"/>
-                                        <constraint firstItem="Ce2-BY-mSq" firstAttribute="width" secondItem="xiF-Lu-gZQ" secondAttribute="width" multiplier="4.43284" id="fZj-ZO-KjR"/>
-                                        <constraint firstItem="Ce2-BY-mSq" firstAttribute="height" secondItem="xiF-Lu-gZQ" secondAttribute="height" id="fjf-1y-Rsi"/>
-                                        <constraint firstAttribute="height" constant="52" id="sYu-kf-sOc"/>
+                                        <constraint firstItem="xiF-Lu-gZQ" firstAttribute="centerY" secondItem="sjf-CX-AZV" secondAttribute="centerY" id="3WZ-qo-hzp"/>
+                                        <constraint firstAttribute="trailing" secondItem="xiF-Lu-gZQ" secondAttribute="trailing" constant="8" id="6Ta-pk-YQH"/>
+                                        <constraint firstItem="Ce2-BY-mSq" firstAttribute="leading" secondItem="sjf-CX-AZV" secondAttribute="leading" constant="12" id="HNM-ya-9X1"/>
+                                        <constraint firstAttribute="bottom" secondItem="xiF-Lu-gZQ" secondAttribute="bottom" constant="12" id="K14-rj-jJc"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ce2-BY-mSq" secondAttribute="bottom" constant="12" id="SUr-FB-sXg"/>
+                                        <constraint firstItem="Ce2-BY-mSq" firstAttribute="centerY" secondItem="sjf-CX-AZV" secondAttribute="centerY" id="U8V-Td-cxq"/>
+                                        <constraint firstItem="Ce2-BY-mSq" firstAttribute="top" secondItem="sjf-CX-AZV" secondAttribute="top" constant="12" id="cVU-ef-b4R"/>
+                                        <constraint firstItem="xiF-Lu-gZQ" firstAttribute="top" secondItem="sjf-CX-AZV" secondAttribute="top" constant="12" id="iXj-MD-Y3M"/>
+                                        <constraint firstItem="xiF-Lu-gZQ" firstAttribute="width" secondItem="Ce2-BY-mSq" secondAttribute="width" multiplier="0.25" id="vU2-tA-R9K"/>
                                     </constraints>
-                                </stackView>
+                                </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="wXM-be-1QJ" firstAttribute="centerX" secondItem="tkw-Lq-YRg" secondAttribute="centerX" id="BPL-Z3-XP9"/>
-                                <constraint firstItem="wXM-be-1QJ" firstAttribute="centerY" secondItem="tkw-Lq-YRg" secondAttribute="centerY" id="vte-bh-sLI"/>
+                                <constraint firstItem="sjf-CX-AZV" firstAttribute="centerY" secondItem="tkw-Lq-YRg" secondAttribute="centerY" id="4WY-K9-xW3"/>
+                                <constraint firstItem="sjf-CX-AZV" firstAttribute="centerX" secondItem="tkw-Lq-YRg" secondAttribute="centerX" id="LYZ-YY-1xL"/>
+                                <constraint firstItem="sjf-CX-AZV" firstAttribute="height" secondItem="tkw-Lq-YRg" secondAttribute="height" multiplier="0.8" id="aJF-fe-TIB"/>
+                                <constraint firstItem="sjf-CX-AZV" firstAttribute="width" secondItem="tkw-Lq-YRg" secondAttribute="width" multiplier="0.903382" id="ti4-jO-bPv"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -116,6 +127,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="쇼핑" id="XbQ-hf-X7j"/>
                     <connections>
+                        <outlet property="mainUIView" destination="sjf-CX-AZV" id="ngz-og-ImG"/>
                         <outlet property="restoreButton" destination="xiF-Lu-gZQ" id="5jF-bW-9g9"/>
                         <outlet property="shoppingTextField" destination="Ce2-BY-mSq" id="6Ia-M7-xMS"/>
                     </connections>
