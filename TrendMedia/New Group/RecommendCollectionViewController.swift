@@ -16,11 +16,26 @@ tableView -> CollectionView
 
 
 class RecommendCollectionViewController: UICollectionViewController {
-
+    
+    
+    
+    //.   (1).  값 전달 - 데이터를 받을 공간 (프로퍼티)생성
+    var movieData : Movie?
+    
     var image = "https://img.hankyung.com/photo/202205/01.29908345.1-1200x.jpg"
+    static let identifier = "RecommendCollectionViewController"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        // (3). 값 전달
+        //title = movieTitle == nil ? "데이터 없음" : movieTitle!
+        title = movieData?.title
+        
+        
         //estimate size는 항상 none으로 설정!
         //컬렉션뷰의 셀 크기, 셀 사이의 간격 등 설정(layout -> 대게 비율로 크기를 잡기 때문)
         //인스턴스 생성
@@ -51,8 +66,8 @@ class RecommendCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
+        // else 구문 빈 인스턴스 생성해서 반환하는 식으로
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as? RecommendCollectionViewCell else { return UICollectionViewCell() }
         
         cell.posterimageView.backgroundColor = .orange
         // kingfisher 사용
@@ -67,9 +82,13 @@ class RecommendCollectionViewController: UICollectionViewController {
         // 기본
 //        view.makeToast("토스트 \(indexPath.item)개 먹고싶다.")
         //키보드 올라왔을때 위치 선정
-        view.makeToast("토스트 \(indexPath.item)개 먹고싶다." , duration: 1 , position: .center)
+        view.makeToast("토스트 \(indexPath.item)개 먹고싶다." , duration: 2 , position: .center)
+        
+        
+        self.navigationController?.popViewController(animated: true)
         
     }
+    
     
     
 }

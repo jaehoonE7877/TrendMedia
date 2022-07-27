@@ -13,10 +13,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        
+//        UserDefaults.standard.set(false, forKey: "First") // true이면 vc를 띄우고, false이면 Searchmovie 다른 화면에 배치해야함
+//        
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//        window = UIWindow(windowScene: scene)
+//
+//        
+//        if UserDefaults.standard.bool(forKey: "First") {
+//            
+//            let sb = UIStoryboard(name: "Trend" , bundle: nil)
+//            
+//            let vc = sb.instantiateViewController(withIdentifier: "TestSceneViewController") as! TestSceneViewController
+//            
+//            // 첫 시작화면으로 지정하기
+//            window?.rootViewController = vc
+//            
+//        } else {
+//                        
+//            let sb = UIStoryboard(name: "Search" , bundle: nil)
+//            
+//            let vc = sb.instantiateViewController(withIdentifier: "MovieTableViewController") as! MovieTableViewController
+//            let nav = UINavigationController(rootViewController: vc)
+//            
+//            // 첫 시작화면으로 지정하기
+//            window?.rootViewController = nav
+//        }
+//        
+        //window?.makeKeyAndVisible() // 버전별 대응 척 화면을 보여주기 위함임!
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

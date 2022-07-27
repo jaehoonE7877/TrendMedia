@@ -29,6 +29,8 @@
 		25767AA328868201007E7415 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25767AA228868201007E7415 /* Shopping.storyboard */; };
 		25767AA528868917007E7415 /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25767AA428868917007E7415 /* ShoppingListTableViewCell.swift */; };
 		25767AA728868932007E7415 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25767AA628868932007E7415 /* ShoppingTableViewController.swift */; };
+		259DA6FE2888E7480006E6A9 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259DA6FD2888E7480006E6A9 /* TrendTableViewController.swift */; };
+		25E7F7A4288A3FA1008A96CF /* TestSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7F7A3288A3FA1008A96CF /* TestSceneViewController.swift */; };
 		25EA5F082887870000919BEF /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA5F072887870000919BEF /* MovieTableViewController.swift */; };
 		25EA5F0A2887873300919BEF /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA5F092887873300919BEF /* MovieTableViewCell.swift */; };
 		25EA5F0C28878CA300919BEF /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA5F0B28878CA300919BEF /* Movie.swift */; };
@@ -64,6 +66,8 @@
 		25767AA228868201007E7415 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
 		25767AA428868917007E7415 /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
 		25767AA628868932007E7415 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
+		259DA6FD2888E7480006E6A9 /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
+		25E7F7A3288A3FA1008A96CF /* TestSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSceneViewController.swift; sourceTree = "<group>"; };
 		25EA5F072887870000919BEF /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
 		25EA5F092887873300919BEF /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		25EA5F0B28878CA300919BEF /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -105,15 +109,13 @@
 			isa = PBXGroup;
 			children = (
 				25226AF02884DDE100EF3892 /* AppDelegate.swift */,
-				25226AF22884DDE100EF3892 /* SceneDelegate.swift */,
-				25226AF42884DDE100EF3892 /* ViewController.swift */,
-				25226AF62884DDE100EF3892 /* Main.storyboard */,
-				25767AA1288681DE007E7415 /* Shopping */,
-				25767A9E288680EB007E7415 /* Home */,
-				25767A9F28868111007E7415 /* New Group */,
 				25226AF92884DDE200EF3892 /* Assets.xcassets */,
-				25226AFB2884DDE200EF3892 /* LaunchScreen.storyboard */,
+				25767A9E288680EB007E7415 /* Home */,
 				25226AFE2884DDE200EF3892 /* Info.plist */,
+				25226AFB2884DDE200EF3892 /* LaunchScreen.storyboard */,
+				25767A9F28868111007E7415 /* New Group */,
+				25226AF22884DDE100EF3892 /* SceneDelegate.swift */,
+				25767AA1288681DE007E7415 /* Shopping */,
 			);
 			path = TrendMedia;
 			sourceTree = "<group>";
@@ -121,6 +123,8 @@
 		25767A9E288680EB007E7415 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				25226AF42884DDE100EF3892 /* ViewController.swift */,
+				25226AF62884DDE100EF3892 /* Main.storyboard */,
 				25226B042884F11000EF3892 /* Home.storyboard */,
 				25226B062884FE3D00EF3892 /* SettingTableViewController.swift */,
 			);
@@ -132,6 +136,8 @@
 			children = (
 				25296EC62886407B007DAB01 /* Intro.storyboard */,
 				25296EC42886404B007DAB01 /* Trend.storyboard */,
+				25E7F7A3288A3FA1008A96CF /* TestSceneViewController.swift */,
+				259DA6FD2888E7480006E6A9 /* TrendTableViewController.swift */,
 				25EA5F1128879E0200919BEF /* RecommendCollectionViewCell.swift */,
 				25EA5F0F28879ABE00919BEF /* RecommendCollectionViewController.swift */,
 				25767A9C28864D9B007E7415 /* BucketlistTableViewCell.swift */,
@@ -251,10 +257,12 @@
 				25767A992886478E007E7415 /* UITextField+Extension.swift in Sources */,
 				25767A9728864531007E7415 /* UIViewController+Extension.swift in Sources */,
 				25226B0B28853EE500EF3892 /* SettingModeTableViewController.swift in Sources */,
+				25E7F7A4288A3FA1008A96CF /* TestSceneViewController.swift in Sources */,
 				25226B072884FE3D00EF3892 /* SettingTableViewController.swift in Sources */,
 				25226AF52884DDE100EF3892 /* ViewController.swift in Sources */,
 				25EA5F0A2887873300919BEF /* MovieTableViewCell.swift in Sources */,
 				25EA5F0C28878CA300919BEF /* Movie.swift in Sources */,
+				259DA6FE2888E7480006E6A9 /* TrendTableViewController.swift in Sources */,
 				25767AA728868932007E7415 /* ShoppingTableViewController.swift in Sources */,
 				25EA5F082887870000919BEF /* MovieTableViewController.swift in Sources */,
 				25226AF12884DDE100EF3892 /* AppDelegate.swift in Sources */,
@@ -416,7 +424,7 @@
 				INFOPLIST_FILE = TrendMedia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Intro;
+				INFOPLIST_KEY_UIMainStoryboardFile = Trend;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -429,7 +437,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -445,7 +453,7 @@
 				INFOPLIST_FILE = TrendMedia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Intro;
+				INFOPLIST_KEY_UIMainStoryboardFile = Trend;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -458,7 +466,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

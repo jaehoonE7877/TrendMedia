@@ -14,7 +14,7 @@ class ShoppingListTableViewCell: UITableViewCell {
     @IBOutlet weak var bookmarkButton: UIButton!
     
     
-    
+    //삼항연산자 변수나 상수에 담아서 사용해보기
     @IBAction func checkboxButtonTapped(_ sender: UIButton) {
         
         sender.isSelected ? checkboxButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .highlighted) : checkboxButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
