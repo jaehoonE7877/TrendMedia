@@ -31,7 +31,7 @@ class BucketlistTableViewController: UITableViewController {
     
     //(1) 값 전달
     var textfieldPlaceholder: String?
-    // 옵셔널 스트링 타입으로 선언하더라도 오류가 뜨지 않는 이유는?
+    //옵셔널 스트링 타입으로 선언하더라도 오류가 뜨지 않는 이유는?
     //프로퍼티 자체(placeholder)가 옵셔널이라면? ㅇ
     //하지만 String Interpolation이라면? > 오류 발생
     
