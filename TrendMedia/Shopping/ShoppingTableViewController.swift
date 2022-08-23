@@ -10,26 +10,31 @@ import UIKit
 import RealmSwift
 
 class ShoppingTableViewController: UITableViewController {
-
+    
     
     @IBOutlet weak var shoppingTextField: UITextField!
     @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var mainUIView: UIView!
-    
-    var shoppingList = ["그립톡 구매하기", "사이다 구매", "아이패드 최저가 알아보기", "양말"]
-    
+        
     let localRealm = try! Realm()
-
-    var tasks: Results<UserShopping>!
-
+    
+    var tasks: Results<UserShopping>!{
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("Realm is located at:", localRealm.configuration.fileURL!)
-        tasks = localRealm.objects(UserShopping.self).sorted(byKeyPath: "updatedDate", ascending: true)
         
         designUI()
-       
+        fetchRealm()
+    }
+    
+    func fetchRealm() {
+        tasks = localRealm.objects(UserShopping.self).sorted(byKeyPath: "updatedDate", ascending: true)
     }
     
     func designUI() {
@@ -45,7 +50,10 @@ class ShoppingTableViewController: UITableViewController {
         restoreButton.layer.cornerRadius = 4
         
         designTextField(item: shoppingTextField)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "정렬", image: nil, primaryAction: nil, menu: sortActionSet())
     }
+    
     
     // textField action
     @IBAction func shoppingListTextField(_ sender: UITextField) {
@@ -57,15 +65,15 @@ class ShoppingTableViewController: UITableViewController {
         
         guard let shopping = shoppingTextField.text else { return }
         
-        let task = UserShopping(shoppingList: shopping, updatedDate: Date())
+        let tasks = UserShopping(shoppingList: shopping, updatedDate: Date())
         
         try! localRealm.write {
-            localRealm.add(task)    // Create(실제로 추가되는 것)
+            localRealm.add(tasks)    // Create(실제로 추가되는 것)
             print("Realm Succeed")
             
             self.tableView.reloadData()
             self.shoppingTextField.text = ""
-
+            
             //dismiss(animated: true)     // dismiss 위치 => 조건에 따라서 성공시에만 dismiss되도록
         }
         
@@ -77,6 +85,52 @@ class ShoppingTableViewController: UITableViewController {
         item.attributedPlaceholder = NSAttributedString(string: "무엇을 구매하실 건가요?", attributes: [NSAttributedString.Key.foregroundColor : UIColor.systemGray])
         item.backgroundColor = .systemGray5
         item.borderStyle = .none
+    }
+    
+    func sortActionSet() -> UIMenu {
+        
+        
+        let dic = UIAction(title: "가나다순으로 정렬",
+                           image: UIImage(systemName: "a.book.closed.fill.ko"),
+                           handler: { action in
+            self.sortRealm(action: action)
+                })
+        
+        let todo = UIAction(title: "구매예정순으로 정렬",
+                            image: UIImage(systemName: "checkmark.square"),
+                            handler: { action in
+            self.sortRealm(action: action)
+        })
+        
+        let wish = UIAction(title: "즐겨찾기순으로 정렬",
+                            image: UIImage(systemName: "heart.fill"),
+                            handler: { action in
+            self.sortRealm(action: action)
+        })
+        
+        let cancel = UIAction(title: "취소", attributes: .destructive, handler: { _ in print("취소됨")})
+        
+        
+        let menu = UIMenu(title: "", children: [dic, todo, wish, cancel])
+        
+        return menu
+    }
+    
+    func sortRealm(action: UIAction){
+        
+        switch action.title {
+        case "가나다순으로 정렬":
+            tasks = localRealm.objects(UserShopping.self).sorted(byKeyPath: "shoppingList", ascending: true)
+        case "구매예정순으로 정렬":
+            tasks = localRealm.objects(UserShopping.self).sorted(byKeyPath: "checkMark", ascending: true)
+        case "즐겨찾기순으로 정렬":
+            tasks = localRealm.objects(UserShopping.self).sorted(byKeyPath: "bookMark", ascending: false)
+        default:
+            print("Error")
+        }
+        
+        
+        
     }
     
     
@@ -96,15 +150,24 @@ class ShoppingTableViewController: UITableViewController {
         cell.configureUI()
         
         cell.shoppingListLabel.font = .boldSystemFont(ofSize: 13)
-        cell.bookmarkButton.tintColor = .tintColor
+        cell.bookmarkButton.tintColor = .systemPink
         cell.checkboxButton.tintColor = .tintColor
-        cell.bookmarkButton.backgroundColor = .clear
-        cell.checkboxButton.backgroundColor = .clear
-    
+        //        cell.bookmarkButton.backgroundColor = .clear
+        //        cell.checkboxButton.backgroundColor = .clear
+        
+        
+        cell.checkboxButton.tag = indexPath.row
+        cell.bookmarkButton.tag = indexPath.row
+        
         cell.checkboxButton.addTarget(self, action: #selector(checkboxButtonTapped(_:)), for: .touchUpInside)
-        //tasks[indexPath.row].checkMark = cell.checkboxButton.isSelected
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
-        //tasks[indexPath.row].bookMark = cell.bookmarkButton.isSelected
+        
+        
+        
+        let checkmark = tasks[indexPath.row].checkMark ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square")
+        cell.checkboxButton.setImage(checkmark, for: .normal)
+        let bookmark = tasks[indexPath.row].bookMark ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        cell.bookmarkButton.setImage(bookmark, for: .normal)
         
         cell.shoppingListLabel.text = tasks[indexPath.row].shoppingList
         
@@ -117,29 +180,21 @@ class ShoppingTableViewController: UITableViewController {
     @objc
     func checkboxButtonTapped(_ sender: UIButton){
         
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.setImage(UIImage(systemName: "checkmark.square" ), for: .normal)
-            
-        } else { // 눌린 상태로
-            sender.isSelected = true
-            sender.setImage(UIImage(systemName: "checkmark.square.fill" ), for: .normal)
-            
+        try! localRealm.write{
+            tasks[sender.tag].checkMark = !tasks[sender.tag].checkMark
         }
-        
+        //tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
+        tableView.reloadData()
     }
     
     @objc
     func bookmarkButtonTapped(_ sender: UIButton){
         // 초기 false
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.setImage(UIImage(systemName: "star"), for: .normal)
-        } else {
-            sender.isSelected = true
-            sender.setImage(UIImage(systemName: "star.fill"), for: .normal)
-            
+        try! localRealm.write{
+            tasks[sender.tag].bookMark = !tasks[sender.tag].bookMark
         }
+        //tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -150,11 +205,12 @@ class ShoppingTableViewController: UITableViewController {
         
         if editingStyle == .delete{
             
-            DispatchQueue.main.async {
-                self.shoppingList.remove(at: indexPath.row)
-                tableView.reloadData()
+            try! localRealm.write{
+                localRealm.delete(tasks[indexPath.section])
+                DispatchQueue.main.async{
+                    tableView.reloadData()
+                }
             }
-            
         }
     }
     
@@ -162,9 +218,15 @@ class ShoppingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20.0
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ItemViewController") as? ItemViewController else { return }
+        vc.objectId = tasks[indexPath.row].objectId
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
-
 extension ShoppingTableViewController {
     
     // textfield 비어있을 때 alert action
@@ -178,5 +240,5 @@ extension ShoppingTableViewController {
         
         present(alert, animated: true, completion: nil)
     }
-   
+    
 }

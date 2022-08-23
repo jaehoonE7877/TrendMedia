@@ -17,7 +17,7 @@ class ShoppingListTableViewCell: UITableViewCell {
         //checkboxButton.layer.borderColor = UIColor.black.cgColor
         //bookmarkButton.layer.borderColor = UIColor.black.cgColor
         checkboxButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-        bookmarkButton.setImage(UIImage(systemName: "star"), for: .normal)
+        bookmarkButton.setImage(UIImage(systemName: "heart"), for: .normal)
         
     }
         
