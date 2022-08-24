@@ -8,6 +8,7 @@
 import UIKit
 
 import RealmSwift
+import Kingfisher
 
 class ShoppingTableViewController: UITableViewController {
     
@@ -15,8 +16,10 @@ class ShoppingTableViewController: UITableViewController {
     @IBOutlet weak var shoppingTextField: UITextField!
     @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var mainUIView: UIView!
-        
+    
     let localRealm = try! Realm()
+    
+    var shoppingImageURL: String?
     
     var tasks: Results<UserShopping>!{
         didSet {
@@ -31,6 +34,7 @@ class ShoppingTableViewController: UITableViewController {
         
         designUI()
         fetchRealm()
+        
     }
     
     func fetchRealm() {
@@ -42,10 +46,10 @@ class ShoppingTableViewController: UITableViewController {
         mainUIView.backgroundColor = .systemGray5
         mainUIView.layer.cornerRadius = 8
         
-        tableView.rowHeight = 56
+        tableView.rowHeight = 100
         
         restoreButton.setTitle("추가", for: .normal)
-        restoreButton.setTitleColor(.black, for: .normal)
+        restoreButton.setTitleColor(.white, for: .normal)
         restoreButton.backgroundColor = UIColor.systemGray4
         restoreButton.layer.cornerRadius = 4
         
@@ -65,19 +69,25 @@ class ShoppingTableViewController: UITableViewController {
         
         guard let shopping = shoppingTextField.text else { return }
         
-        let tasks = UserShopping(shoppingList: shopping, updatedDate: Date())
-        
-        try! localRealm.write {
-            localRealm.add(tasks)    // Create(실제로 추가되는 것)
-            print("Realm Succeed")
-            
-            self.tableView.reloadData()
-            self.shoppingTextField.text = ""
-            
-            //dismiss(animated: true)     // dismiss 위치 => 조건에 따라서 성공시에만 dismiss되도록
+        ImageSearchAPIManager.shared.fetchImageData(query: shopping) { value in
+            self.shoppingImageURL = value
         }
         
+        let task = UserShopping(shoppingList: shopping, updatedDate: Date(), imageURL: shoppingImageURL)
+        
+        do {
+            try self.localRealm.write{
+                self.localRealm.add(task)
+                
+                self.tableView.reloadData()
+                self.shoppingTextField.text = ""
+                
+            }
+        } catch let error {
+            print("Realm Failed" ,error)
+        }
         view.endEditing(true)
+        
     }
     
     
@@ -94,7 +104,7 @@ class ShoppingTableViewController: UITableViewController {
                            image: UIImage(systemName: "a.book.closed.fill.ko"),
                            handler: { action in
             self.sortRealm(action: action)
-                })
+        })
         
         let todo = UIAction(title: "구매예정순으로 정렬",
                             image: UIImage(systemName: "checkmark.square"),
@@ -129,8 +139,6 @@ class ShoppingTableViewController: UITableViewController {
             print("Error")
         }
         
-        
-        
     }
     
     
@@ -152,9 +160,6 @@ class ShoppingTableViewController: UITableViewController {
         cell.shoppingListLabel.font = .boldSystemFont(ofSize: 13)
         cell.bookmarkButton.tintColor = .systemPink
         cell.checkboxButton.tintColor = .tintColor
-        //        cell.bookmarkButton.backgroundColor = .clear
-        //        cell.checkboxButton.backgroundColor = .clear
-        
         
         cell.checkboxButton.tag = indexPath.row
         cell.bookmarkButton.tag = indexPath.row
@@ -163,14 +168,18 @@ class ShoppingTableViewController: UITableViewController {
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
         
         
-        
         let checkmark = tasks[indexPath.row].checkMark ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square")
         cell.checkboxButton.setImage(checkmark, for: .normal)
         let bookmark = tasks[indexPath.row].bookMark ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         cell.bookmarkButton.setImage(bookmark, for: .normal)
         
-        cell.shoppingListLabel.text = tasks[indexPath.row].shoppingList
+        if let imageURL = tasks[indexPath.row].imageURL {
+            cell.shoppingImageView.kf.setImage(with: URL(string: imageURL))
+        } else {
+            cell.shoppingImageView.image = UIImage(systemName: "xmark")
+        }
         
+        cell.shoppingListLabel.text = tasks[indexPath.row].shoppingList
         
         
         return cell
@@ -183,7 +192,6 @@ class ShoppingTableViewController: UITableViewController {
         try! localRealm.write{
             tasks[sender.tag].checkMark = !tasks[sender.tag].checkMark
         }
-        //tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
         tableView.reloadData()
     }
     
@@ -193,7 +201,6 @@ class ShoppingTableViewController: UITableViewController {
         try! localRealm.write{
             tasks[sender.tag].bookMark = !tasks[sender.tag].bookMark
         }
-        //tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
         tableView.reloadData()
     }
     

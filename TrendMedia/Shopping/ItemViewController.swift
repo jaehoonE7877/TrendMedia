@@ -42,7 +42,7 @@ class ItemViewController: UIViewController {
     func configureUI(){
         
         guard let itemTitle = localRealm.object(ofType: UserShopping.self, forPrimaryKey: objectId)?.shoppingList else { return }
-        guard let checkMarkValue = localRealm.object(ofType: UserShopping.self, forPrimaryKey: objectId)?.bookMark else { return }
+        guard let checkMarkValue = localRealm.object(ofType: UserShopping.self, forPrimaryKey: objectId)?.checkMark else { return }
         guard let bookMarkValue = localRealm.object(ofType: UserShopping.self, forPrimaryKey: objectId)?.bookMark else { return }
         
         itemTitleLabel.text = itemTitle
@@ -63,6 +63,7 @@ class ItemViewController: UIViewController {
         detailTextView.layer.cornerRadius = 8
         
         let checkMarkText = checkMarkValue ? "아직 완료되지 않았습니다!" : "구매 완료했습니다!"
+        print(checkMarkValue, bookMarkValue)
         checkMarkLabel.text = checkMarkText
         checkMarkLabel.font = .boldSystemFont(ofSize: 16)
         checkMarkLabel.textAlignment = .center

@@ -13,14 +13,16 @@ class UserShopping : Object {
     @Persisted var updatedDate = Date()
     @Persisted var checkMark: Bool
     @Persisted var bookMark: Bool
+    @Persisted var imageURL: String?
 
     @Persisted(primaryKey: true) var objectId: ObjectId
 
-    convenience init(shoppingList: String, updatedDate: Date) {
+    convenience init(shoppingList: String, updatedDate: Date, imageURL: String?) {
         self.init()
         self.shoppingList = shoppingList
         self.updatedDate = updatedDate
         self.checkMark = false
         self.bookMark = false
+        self.imageURL = imageURL
     }
 }
