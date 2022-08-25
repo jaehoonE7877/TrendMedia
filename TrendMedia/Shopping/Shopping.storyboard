@@ -177,19 +177,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YCx-eQ-iIK">
+                                <rect key="frame" x="20" y="160" width="374" height="226"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4a7-ab-M1M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="YCx-eQ-iIK" firstAttribute="leading" secondItem="4a7-ab-M1M" secondAttribute="leading" constant="20" id="5zd-Uo-waX"/>
                             <constraint firstItem="69p-yL-g7p" firstAttribute="height" secondItem="qnx-TP-ZTl" secondAttribute="height" multiplier="0.36" id="DPq-aA-Xgg"/>
                             <constraint firstItem="4a7-ab-M1M" firstAttribute="trailing" secondItem="f0z-Xu-0SS" secondAttribute="trailing" constant="20" id="Fle-wK-NKE"/>
+                            <constraint firstItem="YCx-eQ-iIK" firstAttribute="top" secondItem="oXI-xX-tbs" secondAttribute="bottom" constant="16" id="J9z-w4-gbp"/>
                             <constraint firstItem="oXI-xX-tbs" firstAttribute="leading" secondItem="4a7-ab-M1M" secondAttribute="leading" constant="20" id="MXZ-Lm-O9w"/>
                             <constraint firstItem="oXI-xX-tbs" firstAttribute="top" secondItem="4a7-ab-M1M" secondAttribute="top" constant="60" id="PQK-b8-Wl9"/>
                             <constraint firstItem="4a7-ab-M1M" firstAttribute="trailing" secondItem="oXI-xX-tbs" secondAttribute="trailing" constant="20" id="Z75-kr-T9E"/>
                             <constraint firstItem="69p-yL-g7p" firstAttribute="leading" secondItem="4a7-ab-M1M" secondAttribute="leading" constant="20" id="ft4-no-5pd"/>
-                            <constraint firstItem="f0z-Xu-0SS" firstAttribute="centerX" secondItem="qnx-TP-ZTl" secondAttribute="centerX" id="jTY-2z-Yd8"/>
+                            <constraint firstItem="4a7-ab-M1M" firstAttribute="trailing" secondItem="YCx-eQ-iIK" secondAttribute="trailing" constant="20" id="hjA-a9-eKC"/>
                             <constraint firstItem="f0z-Xu-0SS" firstAttribute="centerY" secondItem="qnx-TP-ZTl" secondAttribute="centerY" id="nBK-Mi-E6b"/>
                             <constraint firstItem="f0z-Xu-0SS" firstAttribute="leading" secondItem="4a7-ab-M1M" secondAttribute="leading" constant="20" id="puV-tg-aRk"/>
+                            <constraint firstItem="YCx-eQ-iIK" firstAttribute="height" secondItem="69p-yL-g7p" secondAttribute="height" multiplier="0.7" id="rmW-7y-VRU"/>
                             <constraint firstItem="69p-yL-g7p" firstAttribute="top" secondItem="f0z-Xu-0SS" secondAttribute="bottom" constant="16" id="x7J-4B-SJm"/>
                             <constraint firstItem="4a7-ab-M1M" firstAttribute="trailing" secondItem="69p-yL-g7p" secondAttribute="trailing" constant="20" id="y22-Q1-c74"/>
                         </constraints>
@@ -198,6 +204,7 @@
                         <outlet property="bookMarkButton" destination="zrt-pV-uC9" id="Xbd-hJ-mmA"/>
                         <outlet property="checkMarkLabel" destination="nE0-ib-rSM" id="4nD-Rp-d3h"/>
                         <outlet property="detailTextView" destination="69p-yL-g7p" id="BTv-Rv-1Y0"/>
+                        <outlet property="itemImageView" destination="YCx-eQ-iIK" id="3f3-a8-CNg"/>
                         <outlet property="itemTitleLabel" destination="oXI-xX-tbs" id="iIy-Tw-JL5"/>
                     </connections>
                 </viewController>

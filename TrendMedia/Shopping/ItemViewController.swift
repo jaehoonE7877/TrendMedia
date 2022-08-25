@@ -25,6 +25,10 @@ class ItemViewController: UIViewController {
    
     @IBOutlet weak var detailTextView: UITextView!
     
+    @IBOutlet weak var itemImageView: UIImageView!
+    
+    var tasks: Results<UserShopping>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,7 +66,7 @@ class ItemViewController: UIViewController {
         detailTextView.layer.masksToBounds = true
         detailTextView.layer.cornerRadius = 8
         
-        let checkMarkText = checkMarkValue ? "아직 완료되지 않았습니다!" : "구매 완료했습니다!"
+        let checkMarkText = checkMarkValue ? "구매 완료했습니다!" : "아직 완료되지 않았습니다!"
         print(checkMarkValue, bookMarkValue)
         checkMarkLabel.text = checkMarkText
         checkMarkLabel.font = .boldSystemFont(ofSize: 16)
@@ -71,6 +75,10 @@ class ItemViewController: UIViewController {
         let bookImage = bookMarkValue ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         bookMarkButton.setImage(bookImage, for: .normal)
         bookMarkButton.tintColor = .systemPink
+        
+        itemImageView.contentMode = .scaleAspectFill
+        itemImageView.image = loadImageFromDocument(fileName: "\(objectId)")
+        
     }
     
     

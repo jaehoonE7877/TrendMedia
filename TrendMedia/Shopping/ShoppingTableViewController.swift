@@ -65,27 +65,40 @@ class ShoppingTableViewController: UITableViewController {
     }
     
     // 추가 버튼 action(버튼을 누르면 textfield 비워주고, 키보드 올라와있으면 내려주고, 빈칸일 때 누르면 alert띄워주기)
+    
     @IBAction func restoreButtonTapped(_ sender: UIButton) {
         
         guard let shopping = shoppingTextField.text else { return }
         
         ImageSearchAPIManager.shared.fetchImageData(query: shopping) { value in
+            
             self.shoppingImageURL = value
-        }
-        
-        let task = UserShopping(shoppingList: shopping, updatedDate: Date(), imageURL: shoppingImageURL)
-        
-        do {
-            try self.localRealm.write{
-                self.localRealm.add(task)
+            
+            DispatchQueue.main.async {
                 
-                self.tableView.reloadData()
-                self.shoppingTextField.text = ""
+                let task = UserShopping(shoppingList: shopping, updatedDate: Date(), imageURL: self.shoppingImageURL)
                 
+                do {
+                    try self.localRealm.write{
+                        self.localRealm.add(task)
+                        
+                        self.tableView.reloadData()
+                        self.shoppingTextField.text = ""
+                        
+                    }
+                } catch let error {
+                    print("Realm Failed" ,error)
+                }
+                guard let shoppingImageURL = self.shoppingImageURL else { return }
+                
+                let data = try? Data(contentsOf: URL(string: shoppingImageURL)!)
+                if let image = UIImage(data: data!) {
+                    self.saveImageToDocument(fileName: "\(task.objectId)", image: image)
+                }
             }
-        } catch let error {
-            print("Realm Failed" ,error)
+            
         }
+
         view.endEditing(true)
         
     }
@@ -181,7 +194,6 @@ class ShoppingTableViewController: UITableViewController {
         
         cell.shoppingListLabel.text = tasks[indexPath.row].shoppingList
         
-        
         return cell
     }
     
@@ -212,11 +224,16 @@ class ShoppingTableViewController: UITableViewController {
         
         if editingStyle == .delete{
             
-            try! localRealm.write{
-                localRealm.delete(tasks[indexPath.section])
-                DispatchQueue.main.async{
-                    tableView.reloadData()
+            do {
+                try localRealm.write{
+                    localRealm.delete(tasks[indexPath.row])
+                    removeImageForDocument(fileName: "\(tasks[indexPath.row])")
+                    DispatchQueue.main.async{
+                        tableView.reloadData()
+                    }
                 }
+            } catch {
+                print(error)
             }
         }
     }
