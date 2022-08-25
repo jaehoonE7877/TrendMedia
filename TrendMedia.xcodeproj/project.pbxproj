@@ -53,6 +53,9 @@
 		25EA5F182887AE9A00919BEF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 25EA5F172887AE9A00919BEF /* Toast */; };
 		25F5D15F28B7AD3D00103C49 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F5D15E28B7AD3D00103C49 /* FileManager+Extension.swift */; };
 		25F5D16128B7BB4C00103C49 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F5D16028B7BB4C00103C49 /* UIImage+Extension.swift */; };
+		25F5D16728B7C7BE00103C49 /* BackupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F5D16628B7C7BE00103C49 /* BackupTableViewController.swift */; };
+		25F5D16928B7C7EA00103C49 /* BackupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F5D16828B7C7EA00103C49 /* BackupTableViewCell.swift */; };
+		25F5D16C28B7C86900103C49 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 25F5D16B28B7C86900103C49 /* Zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,8 @@
 		25EA5F1128879E0200919BEF /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		25F5D15E28B7AD3D00103C49 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		25F5D16028B7BB4C00103C49 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		25F5D16628B7C7BE00103C49 /* BackupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTableViewController.swift; sourceTree = "<group>"; };
+		25F5D16828B7C7EA00103C49 /* BackupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25F5D16C28B7C86900103C49 /* Zip in Frameworks */,
 				2515808B28B3508400BADFEB /* RealmSwift in Frameworks */,
 				2568E3B728B60897000F872A /* Alamofire in Frameworks */,
 				2568E3BA28B608A6000F872A /* SwiftyJSON in Frameworks */,
@@ -222,6 +228,8 @@
 				25767AA228868201007E7415 /* Shopping.storyboard */,
 				25767AA628868932007E7415 /* ShoppingTableViewController.swift */,
 				25767AA428868917007E7415 /* ShoppingListTableViewCell.swift */,
+				25F5D16628B7C7BE00103C49 /* BackupTableViewController.swift */,
+				25F5D16828B7C7EA00103C49 /* BackupTableViewCell.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -260,6 +268,7 @@
 				253946BC28B4C230004CC1BF /* Then */,
 				2568E3B628B60897000F872A /* Alamofire */,
 				2568E3B928B608A6000F872A /* SwiftyJSON */,
+				25F5D16B28B7C86900103C49 /* Zip */,
 			);
 			productName = TrendMedia;
 			productReference = 25226AED2884DDE100EF3892 /* TrendMedia.app */;
@@ -297,6 +306,7 @@
 				253946BB28B4C230004CC1BF /* XCRemoteSwiftPackageReference "Then" */,
 				2568E3B528B60897000F872A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2568E3B828B608A6000F872A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				25F5D16A28B7C86900103C49 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 25226AEE2884DDE100EF3892 /* Products */;
 			projectDirPath = "";
@@ -344,6 +354,7 @@
 				25EA5F0A2887873300919BEF /* MovieTableViewCell.swift in Sources */,
 				25EA5F0C28878CA300919BEF /* Movie.swift in Sources */,
 				259DA6FE2888E7480006E6A9 /* TrendTableViewController.swift in Sources */,
+				25F5D16728B7C7BE00103C49 /* BackupTableViewController.swift in Sources */,
 				25767AA728868932007E7415 /* ShoppingTableViewController.swift in Sources */,
 				25EA5F082887870000919BEF /* MovieTableViewController.swift in Sources */,
 				25226AF12884DDE100EF3892 /* AppDelegate.swift in Sources */,
@@ -360,6 +371,7 @@
 				25000BD22886ADEE005E32C3 /* SearchTableViewCell.swift in Sources */,
 				2515808E28B350C000BADFEB /* RealmModel.swift in Sources */,
 				25F5D15F28B7AD3D00103C49 /* FileManager+Extension.swift in Sources */,
+				25F5D16928B7C7EA00103C49 /* BackupTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,6 +649,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		25F5D16A28B7C86900103C49 /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -679,6 +699,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 25EA5F162887AE9A00919BEF /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		25F5D16B28B7C86900103C49 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25F5D16A28B7C86900103C49 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

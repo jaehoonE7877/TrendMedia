@@ -35,7 +35,9 @@ class ShoppingTableViewController: UITableViewController {
         designUI()
         fetchRealm()
         
+        self.tableView.reloadData()
     }
+    
     
     func fetchRealm() {
         tasks = localRealm.objects(UserShopping.self).sorted(byKeyPath: "updatedDate", ascending: true)
@@ -56,8 +58,14 @@ class ShoppingTableViewController: UITableViewController {
         designTextField(item: shoppingTextField)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "정렬", image: nil, primaryAction: nil, menu: sortActionSet())
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "설정", style: .plain, target: self, action: #selector(settingButtonTapped))
     }
     
+    @objc
+    func settingButtonTapped(){
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "BackupTableViewController") as? BackupTableViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     // textField action
     @IBAction func shoppingListTextField(_ sender: UITextField) {

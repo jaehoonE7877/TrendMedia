@@ -58,7 +58,7 @@ extension UIViewController {
         
     }
     
-    func fetchDocumentZipFile() {
+    func fetchDocumentZipFile(completion: @escaping ([String]) -> () ) {
         
         do {
             guard let path = documentDirectoryPath() else { return }
@@ -66,12 +66,13 @@ extension UIViewController {
             let docs = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
             print("docs: \(docs)")
             
-            let zip = docs.filter { $0.pathExtension == ".zip" }
+            let zip = docs.filter { $0.pathExtension == "zip" }
             print("zip: \(zip)")
             
             let result = zip.map { $0.lastPathComponent }
             print("result = \(result)")
             
+            completion(result)
         } catch {
             print("ERROR")
         }

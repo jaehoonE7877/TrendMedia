@@ -76,7 +76,7 @@ class ItemViewController: UIViewController {
         bookMarkButton.setImage(bookImage, for: .normal)
         bookMarkButton.tintColor = .systemPink
         
-        itemImageView.contentMode = .scaleAspectFill
+        itemImageView.contentMode = .scaleToFill
         itemImageView.image = loadImageFromDocument(fileName: "\(objectId)")
         
     }
